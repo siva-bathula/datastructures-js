@@ -23,7 +23,7 @@ class MinHeap {
         let idx = this.heap.length - 1;
         while (idx > 0) {
             let parent = Math.floor((idx - 1) / 2);
-            if (this.heap[idx].capital >= this.heap[parent].capital) break;
+            if (this.heap[idx] >= this.heap[parent]) break;
             this._swap(idx, parent);
             idx = parent;
         }
@@ -32,8 +32,8 @@ class MinHeap {
         let idx = 0, len = this.heap.length;
         while (true) {
             let left = 2 * idx + 1, right = 2 * idx + 2, smallest = idx;
-            if (left < len && this.heap[left].capital < this.heap[smallest].capital) smallest = left;
-            if (right < len && this.heap[right].capital < this.heap[smallest].capital) smallest = right;
+            if (left < len && this.heap[left] < this.heap[smallest]) smallest = left;
+            if (right < len && this.heap[right] < this.heap[smallest]) smallest = right;
             if (smallest === idx) break;
             this._swap(idx, smallest);
             idx = smallest;
